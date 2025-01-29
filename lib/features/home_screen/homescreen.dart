@@ -136,7 +136,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => GaneshSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -144,7 +144,7 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => GanpatiScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
 
                     // if (item['title'] == "देवी दुर्गा आरती") {
@@ -162,7 +162,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => DurgaSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -170,7 +170,7 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => DurgaScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
                     // if (item['title'] == "दत्ताची आरती") {
                     //   Navigator.push(
@@ -187,7 +187,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => DuttaSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -195,7 +195,7 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => DuttaScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
 
                     if (item['title'] == "शंकराची आरती") {
@@ -204,7 +204,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => ShivSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -212,7 +212,7 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => ShivScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
                     // if (item['title'] == "शंकराची आरती") {
                     //   Navigator.push(
@@ -237,7 +237,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => VitthalSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -245,7 +245,7 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => VitthalScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
                     // if (item['title'] == "घालीन लोटांगण") {
                     //   Navigator.push(
@@ -261,7 +261,7 @@ class AartiSangrahScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => GhalinSplashScreen(),
                         ),
-                      ).then((_) {
+                      );/*.then((_) {
                         // After the splash screen, navigate to GanpatiScreen
                         Navigator.push(
                           context,
@@ -269,25 +269,25 @@ class AartiSangrahScreen extends StatelessWidget {
                             builder: (context) => GhalinScreen(),
                           ),
                         );
-                      });
+                      });*/
                     }
                     if (item['title'] == "सर्व आरती") {
                       try {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AllScreen(
-                              aartiScreens: [
-                                GanpatiScreen(),
-                                DurgaScreen(),
-                                DuttaScreen(),
-                                ShivScreen(),
-                                VitthalScreen(),
-                                GhalinScreen(),
-                              ],
-                            ),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => AllScreen(
+                        //       aartiScreens: [
+                        //         GanpatiScreen(),
+                        //         DurgaScreen(),
+                        //         DuttaScreen(),
+                        //         ShivScreen(),
+                        //         VitthalScreen(),
+                        //         GhalinScreen(),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // );
                       } catch (e) {
                         print("Error navigating to AllScreen: $e");
                       }

@@ -1,3 +1,5 @@
+import 'package:aarti_mantra/core/local/app_constant.dart';
+import 'package:aarti_mantra/core/services/aarti_timer_service/aarti_timer_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -7,43 +9,76 @@ class DurgaScreen extends StatefulWidget {
 }
 
 class _DurgaScreenState extends State<DurgaScreen> {
-
-
-
-
-
-
-
-
-
-
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int highlightIndex = 0;
+  late AartiTimerService durgaAarti;
+  //final ScrollController _scrollController = ScrollController();
+  //List<GlobalKey> _textKeys = [];
+
+
+  void updateHighlightIndex(int index) {
+    if (index != highlightIndex) {  // Avoid unnecessary rebuilds
+      setState(() {
+        highlightIndex = index;
+      });
+      // _scrollToHighlightedText();
+    }
+  }
+
+  // void _scrollToHighlightedText() {
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     if (_scrollController.hasClients) {
+  //       final context = _textKeys[highlightIndex].currentContext;
+  //       if (context != null) {
+  //         Scrollable.ensureVisible(
+  //           context,
+  //           duration: const Duration(milliseconds: 500),
+  //           curve: Curves.easeInOut,
+  //         );
+  //       }
+  //     }
+  //   });
+  // }
+
 
   @override
   void initState() {
     super.initState();
     // Start playing the audio when the screen is loaded
+    //_textKeys = List.generate(AppConstants.durgaAartiList.length, (index) => GlobalKey());
     _playAudio();
 
     // Listen for when the audio completes
     _audioPlayer.onPlayerComplete.listen((event) {
       // Navigate back to the home screen when the audio finishes
       Navigator.pop(context);
+      durgaAarti.stopTimer();
     });
   }
 
   // Play the audio from assets
   void _playAudio() async {
-    try {
-      await _audioPlayer.play(
-        AssetSource('audio/durga.mp3'), // Use AssetSource for local assets
+    if (!isPlaying) { // Only play if not already playing
+      try {
+        await _audioPlayer.play(
+          AssetSource('audio/durga.mp3'), // Use AssetSource for local assets
+        );
+        debugPrint('Audio Played');
+        setState(() {
+          isPlaying = true;
+        });
+      } catch (e) {
+        print("Error playing audio: $e");
+      }
+
+      durgaAarti = AartiTimerService(
+        itemList: AppConstants.durgaAartiList,
+        onIndexChanged: (p0) {
+          updateHighlightIndex(p0); // Update highlightIndex when the index changes
+        },
       );
-      setState(() {
-        isPlaying = true;
-      });
-    } catch (e) {
-      print("Error playing audio: $e");
+      durgaAarti.startTimer();
     }
   }
 
@@ -51,9 +86,8 @@ class _DurgaScreenState extends State<DurgaScreen> {
   void dispose() {
     super.dispose();
     _audioPlayer.stop(); // Stop the audio when leaving the screen
+    durgaAarti.stopTimer();
   }
-
-
   @override
   Widget build(BuildContext context) {
     // Get screen dimensions for responsive sizing
@@ -90,57 +124,21 @@ class _DurgaScreenState extends State<DurgaScreen> {
 
                 // Ganpati Aarti lyrics
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      ''' 
-दुर्गे दुर्घट भारी तुजविण संसारी
-अनाथनाथे अंबे करुणा विस्तारी
-वारी, वारी, जन्म-मरणाते वारी
-हारी पडलो आता संकट निवारी
-
-जय देवी, जय देवी महिषासुरमर्दिनी
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी महिषासुरमर्दिनी
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी...
-
-त्रिभुवन भुवनी पहाता तुज ऐसे नाही
-चारी श्रमले, परंतु न बोलवे काही
-साही विवाद करीता पडलो प्रवाही
-ते तू भक्तालागी पावसी लवलाही
-
-जय देवी, जय देवी महिषासुरमर्दिनी
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी...
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी...
-
-प्रसन्नवदने प्रसन्न होसी निजदासा
-क्लेशापासुन सोडी तोडी भवपाशा
-अंबे तुजवाचून कोण पुरवीन आशा?
-नरहरी तल्लीन झाला पदपंकजलेशा
-
-जय देवी, जय देवी महिषासुरमर्दिनी
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी महिषासुरमर्दिनी
-सुरवर, ईश्वर वरदे तारक संजीवनी
-जय देवी, जय देवी...
-''',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black, // Text color
-                        shadows: [
-                          // Shadow(
-                          //   blurRadius: 5.0,
-                          //   color: Colors.black.withOpacity(0.8),
-                          //   offset: Offset(1.5, 1.5),
-                          // ),
-                        ],
-                      ),
-                    ),
+                  child: ListView.builder(
+                    //controller: _scrollController,
+                    itemCount: AppConstants.durgaAartiList.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          AppConstants.durgaAartiList[index].text,
+                          style: TextStyle(
+                              color: index == highlightIndex ? Colors.red : null,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

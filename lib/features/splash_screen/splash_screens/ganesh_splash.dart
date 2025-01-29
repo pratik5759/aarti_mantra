@@ -19,12 +19,19 @@ class _GaneshSplashScreenState extends State<GaneshSplashScreen> {
   void initState() {
     super.initState();
     // Set a timer to navigate after 3 seconds
-    Timer(Duration(seconds: 1), () {
+
+    Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => GanpatiScreen()),
       );
     });
+    /*Timer(Duration(seconds: 1), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => GanpatiScreen()),
+      );
+    });*/
   }
   Widget build(BuildContext context) {
     // Get screen dimensions for responsive sizing

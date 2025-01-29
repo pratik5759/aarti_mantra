@@ -1,3 +1,5 @@
+import 'package:aarti_mantra/core/local/app_constant.dart';
+import 'package:aarti_mantra/core/services/aarti_timer_service/aarti_timer_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -9,15 +11,18 @@ class GhalinScreen extends StatefulWidget {
 }
 
 class _GhalinScreenState extends State<GhalinScreen> {
-
-
-
-
-
-
-
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int highlightIndex = 0;
+  late AartiTimerService aartiTimerService;
+
+  void updateHighlightIndex(int index) {
+    if (index != highlightIndex) {  // Avoid unnecessary rebuilds
+      setState(() {
+        highlightIndex = index;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -29,20 +34,32 @@ class _GhalinScreenState extends State<GhalinScreen> {
     _audioPlayer.onPlayerComplete.listen((event) {
       // Navigate back to the home screen when the audio finishes
       Navigator.pop(context);
+      aartiTimerService.stopTimer();
     });
   }
 
   // Play the audio from assets
   void _playAudio() async {
-    try {
-      await _audioPlayer.play(
-        AssetSource('audio/Galin.mp3'), // Use AssetSource for local assets
+    if (!isPlaying) { // Only play if not already playing
+      try {
+        await _audioPlayer.play(
+          AssetSource('audio/Galin.mp3'), // Use AssetSource for local assets
+        );
+        debugPrint('Audio Played');
+        setState(() {
+          isPlaying = true;
+        });
+      } catch (e) {
+        print("Error playing audio: $e");
+      }
+
+      aartiTimerService = AartiTimerService(
+        itemList: AppConstants.ghalinLotangan,
+        onIndexChanged: (p0) {
+          updateHighlightIndex(p0); // Update highlightIndex when the index changes
+        },
       );
-      setState(() {
-        isPlaying = true;
-      });
-    } catch (e) {
-      print("Error playing audio: $e");
+      aartiTimerService.startTimer();
     }
   }
 
@@ -50,7 +67,9 @@ class _GhalinScreenState extends State<GhalinScreen> {
   void dispose() {
     super.dispose();
     _audioPlayer.stop(); // Stop the audio when leaving the screen
+    aartiTimerService.stopTimer();
   }
+
 
 
   @override
@@ -87,52 +106,20 @@ class _GhalinScreenState extends State<GhalinScreen> {
 
                 // Ganpati Aarti lyrics
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      '''  
-                      
- घालीन लोटांगण वंदीन चरण । 
- डोळ्यांनी पाहिन रूप तुझे ।                      
-                            
-प्रेमें आलिंगीन आनंद पूजन ।
-भावे ओवाळिन म्हणे नामा ।।
-
-त्वमेव माता पिता त्वमेव ।
-त्वमेव बन्धु: सखा त्वमेव ।
-
-त्वमेव विद्या द्रविणं त्वमेव ।
-त्वमेव सर्वं मम देवदेव ।।
-
-कायेन वाचा मनसेंद्रियैर्वा ।
-बुध्यात्मना वा प्रकृति स्वभावात् ।
-
-करमि यद्यत् सकलं परस्मै ।
-नारायणायेती समर्पयामि ।।
-
-अच्युतं केशवं राम नारायणम्
-कृष्णदामोदरं वासुदेवं भजे।
-
-श्रीधरं माधवं गोपिकावल्लभम्
-जानकीनायकं रामचंद्र भजे ।।
-
-हरे राम हरे राम राम राम हरे हरे हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे ।।
- ।। मंगलमुर्ती मोरया ।। ।। गणपतिबाप्पा मोरया ।।
-''',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black, // Text color
-                        shadows: [
-                          // Shadow(
-                          //   blurRadius: 5.0,
-                          //   color: Colors.black.withOpacity(0.8),
-                          //   offset: Offset(1.5, 1.5),
-                          // ),
-                        ],
-                      ),
-                    ),
+                  child: ListView.builder(
+                    itemCount: AppConstants.ghalinLotangan.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          AppConstants.ghalinLotangan[index].text,
+                          style: TextStyle(
+                              color: index == highlightIndex ? Colors.red : null,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

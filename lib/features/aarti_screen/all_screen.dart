@@ -1,3 +1,4 @@
+/*
 // import 'package:flutter/material.dart';
 //
 // class AllScreen extends StatefulWidget {
@@ -229,3 +230,4 @@ class _AllScreenState extends State<AllScreen> {
 }
 
 
+*/

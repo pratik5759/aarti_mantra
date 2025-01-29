@@ -1,3 +1,5 @@
+import 'package:aarti_mantra/core/local/app_constant.dart';
+import 'package:aarti_mantra/core/services/aarti_timer_service/aarti_timer_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +11,18 @@ class DuttaScreen extends StatefulWidget {
 }
 
 class _DuttaScreenState extends State<DuttaScreen> {
-
-
-
-
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int highlightIndex = 0;
+  late AartiTimerService duttaAarti;
+
+  void updateHighlightIndex(int index) {
+    if (index != highlightIndex) {  // Avoid unnecessary rebuilds
+      setState(() {
+        highlightIndex = index;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -26,20 +34,32 @@ class _DuttaScreenState extends State<DuttaScreen> {
     _audioPlayer.onPlayerComplete.listen((event) {
       // Navigate back to the home screen when the audio finishes
       Navigator.pop(context);
+      duttaAarti.stopTimer();
     });
   }
 
   // Play the audio from assets
   void _playAudio() async {
-    try {
-      await _audioPlayer.play(
-        AssetSource('audio/dutta.mp3'), // Use AssetSource for local assets
+    if (!isPlaying) { // Only play if not already playing
+      try {
+        await _audioPlayer.play(
+          AssetSource('audio/dutta.mp3'), // Use AssetSource for local assets
+        );
+        debugPrint('Audio Played');
+        setState(() {
+          isPlaying = true;
+        });
+      } catch (e) {
+        print("Error playing audio: $e");
+      }
+
+      duttaAarti = AartiTimerService(
+        itemList: AppConstants.dattatreyaAartiList,
+        onIndexChanged: (p0) {
+          updateHighlightIndex(p0); // Update highlightIndex when the index changes
+        },
       );
-      setState(() {
-        isPlaying = true;
-      });
-    } catch (e) {
-      print("Error playing audio: $e");
+      duttaAarti.startTimer();
     }
   }
 
@@ -47,6 +67,7 @@ class _DuttaScreenState extends State<DuttaScreen> {
   void dispose() {
     super.dispose();
     _audioPlayer.stop(); // Stop the audio when leaving the screen
+    duttaAarti.stopTimer();
   }
 
 
@@ -84,48 +105,20 @@ class _DuttaScreenState extends State<DuttaScreen> {
 
                 // Ganpati Aarti lyrics
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      ''' 
-जय देव जय देव जय श्री गुरुदत्ता ।
-आरती ओवाळिता हरली भवचिंता ॥ धृ ॥
-
-त्रिगुणात्मक त्रैमूर्ती दत्त हा जाणा।
-त्रिगुणी अवतार त्रैलोक्यराणा ।
-नेती नेती शब्द न ये अनुमाना ॥
-सुरवर मुनिजन योगी समाधी न ये ध्याना ॥ १ ॥
-
-सबाह्य अभ्यंतरी तू एक दत्त ।
-अभाग्यासी कैची कळेल ही मात ॥
-पराही परतली तेथे कैचा हा हेत ।
-जन्ममरणाचाही पुरलासे अंत ॥ २ ॥
-
-दत्त येऊनिया ऊभा ठाकला ।
-भावे साष्टांगे प्रणिपात केला ॥
-प्रसन्न होऊनि आशीर्वाद दिधला ।
-जन्ममरणाचा फेरा चुकवीला ॥ ३ ॥
-
-दत्त दत्त ऐसें लागले ध्यान ।
-हरपले मन झाले उन्मन ॥
-मी तू पणाची झाली बोळवण ।
-एका जनार्दनी श्रीदत्तध्यान ॥ ४ ॥ 
-
-''',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black, // Text color
-                        shadows: [
-                          // Shadow(
-                          //   blurRadius: 5.0,
-                          //   color: Colors.black.withOpacity(0.8),
-                          //   offset: Offset(1.5, 1.5),
-                          // ),
-                        ],
-                      ),
-                    ),
+                  child: ListView.builder(
+                    itemCount: AppConstants.dattatreyaAartiList.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          AppConstants.dattatreyaAartiList[index].text,
+                          style: TextStyle(
+                              color: index == highlightIndex ? Colors.red : null,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

@@ -1,3 +1,5 @@
+import 'package:aarti_mantra/core/local/app_constant.dart';
+import 'package:aarti_mantra/core/services/aarti_timer_service/aarti_timer_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +11,18 @@ class ShivScreen extends StatefulWidget {
 }
 
 class _ShivScreenState extends State<ShivScreen> {
-
-
-
-
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int highlightIndex = 0;
+  late AartiTimerService aartiTimerService;
+
+  void updateHighlightIndex(int index) {
+    if (index != highlightIndex) {  // Avoid unnecessary rebuilds
+      setState(() {
+        highlightIndex = index;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -26,21 +34,32 @@ class _ShivScreenState extends State<ShivScreen> {
     _audioPlayer.onPlayerComplete.listen((event) {
       // Navigate back to the home screen when the audio finishes
       Navigator.pop(context);
+      aartiTimerService.stopTimer();
     });
   }
 
   // Play the audio from assets
   void _playAudio() async {
-    try {
-      await _audioPlayer.play(
+    if (!isPlaying) { // Only play if not already playing
+      try {
+        await _audioPlayer.play(
+          AssetSource('audio/mahadev.mp3'), // Use AssetSource for local assets
+        );
+        debugPrint('Audio Played');
+        setState(() {
+          isPlaying = true;
+        });
+      } catch (e) {
+        print("Error playing audio: $e");
+      }
 
-        AssetSource('audio/mahadev.mp3'), // Use AssetSource for local assets
+      aartiTimerService = AartiTimerService(
+        itemList: AppConstants.shankarAartiList,
+        onIndexChanged: (index) {
+          updateHighlightIndex(index); // Update highlightIndex when the index changes
+        },
       );
-      setState(() {
-        isPlaying = true;
-      });
-    } catch (e) {
-      print("Error playing audio: $e");
+      aartiTimerService.startTimer();
     }
   }
 
@@ -48,6 +67,7 @@ class _ShivScreenState extends State<ShivScreen> {
   void dispose() {
     super.dispose();
     _audioPlayer.stop(); // Stop the audio when leaving the screen
+    aartiTimerService.stopTimer();
   }
 
 
@@ -85,56 +105,20 @@ class _ShivScreenState extends State<ShivScreen> {
 
                 // Ganpati Aarti lyrics
                 Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      '''   
-लवथवती विक्राळा ब्रह्माण्डी माळा।
-वीषे कण्ठ काळा त्रिनेत्री ज्वाळा।
-लावण्य सुन्दर मस्तकी बाळा।
-तेथुनिया जळ निर्मळ वाहे झुळझुळा॥
-
-जय देव जय देव जय श्रीशंकरा।
-आरती ओवाळू तुज कर्पुरगौरा॥
-
-कर्पुर्गौरा भोळा नयनी विशाळा।
-अर्धांगी पार्वती सुमनांच्या माळा।
-विभुतीचे उधळण शितिकण्ठ नीळा।
-ऐसा शंकर शोभे उमावेल्हाळा॥
-
-जय देव जय देव जय श्रीशंकरा।
-आरती ओवाळू तुज कर्पुरगौरा॥
-
-देवी दैत्यी सागरमन्थन पै केलें।
-त्यामाजी अवचित हळाहळ जें उठिले।
-ते त्वां असुरपणे प्राशन केलें।
-नीलकण्ठ नाम प्रसिद्ध झालें॥
-
-जय देव जय देव जय श्रीशंकरा।
-आरती ओवाळू तुज कर्पुरगौरा॥
-
-व्याघ्राम्बर फणिवरधर सुन्दर मदनारी।
-पंचानन मनमोहन मुनिजन सुखकारी।
-शतकोटीचें बीज वाचे उच्चारी।
-रघुकुळटिळक रामदासा अन्तरी॥
-
-जय देव जय देव जय श्रीशंकरा।
-आरती ओवाळू तुज कर्पुरगौर||
-''',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 12, // Adjust font size as needed
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black, // Text color
-                        shadows: [
-                          // Shadow(
-                          //   blurRadius: 5.0,
-                          //   color: Colors.black.withOpacity(0.8),
-                          //   offset: Offset(1.5, 1.5),
-                          // ),
-                        ],
-                      ),
-                    ),
+                  child: ListView.builder(
+                    itemCount: AppConstants.shankarAartiList.length,
+                    itemBuilder: (context, index) {
+                      return Center(
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          AppConstants.shankarAartiList[index].text,
+                          style: TextStyle(
+                              color: index == highlightIndex ? Colors.red : null,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

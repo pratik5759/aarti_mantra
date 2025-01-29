@@ -1,3 +1,5 @@
+import 'package:aarti_mantra/core/local/app_constant.dart';
+import 'package:aarti_mantra/core/services/aarti_timer_service/aarti_timer_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +9,18 @@ class VitthalScreen extends StatefulWidget {
 }
 
 class _VitthalScreenState extends State<VitthalScreen> {
-
-
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  int highlightIndex = 0;
+  late AartiTimerService aartiTimerService;
+
+  void updateHighlightIndex(int index) {
+    if (index != highlightIndex) {  // Avoid unnecessary rebuilds
+      setState(() {
+        highlightIndex = index;
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -22,20 +32,32 @@ class _VitthalScreenState extends State<VitthalScreen> {
     _audioPlayer.onPlayerComplete.listen((event) {
       // Navigate back to the home screen when the audio finishes
       Navigator.pop(context);
+      aartiTimerService.stopTimer();
     });
   }
 
   // Play the audio from assets
   void _playAudio() async {
-    try {
-      await _audioPlayer.play(
-        AssetSource('audio/vitthal.mp3'), // Use AssetSource for local assets
+    if (!isPlaying) { // Only play if not already playing
+      try {
+        await _audioPlayer.play(
+          AssetSource('audio/vitthal.mp3'), // Use AssetSource for local assets
+        );
+        debugPrint('Audio Played');
+        setState(() {
+          isPlaying = true;
+        });
+      } catch (e) {
+        print("Error playing audio: $e");
+      }
+
+      aartiTimerService = AartiTimerService(
+        itemList: AppConstants.shankarAartiList,
+        onIndexChanged: (index) {
+          updateHighlightIndex(index); // Update highlightIndex when the index changes
+        },
       );
-      setState(() {
-        isPlaying = true;
-      });
-    } catch (e) {
-      print("Error playing audio: $e");
+      aartiTimerService.startTimer();
     }
   }
 
@@ -43,8 +65,8 @@ class _VitthalScreenState extends State<VitthalScreen> {
   void dispose() {
     super.dispose();
     _audioPlayer.stop(); // Stop the audio when leaving the screen
+    aartiTimerService.stopTimer();
   }
-
 
 
   @override
