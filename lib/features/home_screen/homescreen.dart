@@ -1,6 +1,7 @@
-import 'package:aarti_mantra/splash_screen/splash_screens/durga_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/shiv_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/vitthal_splash.dart';
+
+import 'package:aarti_mantra/features/splash_screen/splash_screens/durga_splash.dart';
+import 'package:aarti_mantra/features/splash_screen/splash_screens/shiv_splash.dart';
+import 'package:aarti_mantra/features/splash_screen/splash_screens/vitthal_splash.dart';
 import 'package:flutter/material.dart';
 
 import '../aarti_screen/all_screen.dart';
