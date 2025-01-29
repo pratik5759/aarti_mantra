@@ -1,17 +1,7 @@
-import 'package:aarti_mantra/splash_screen/splash_screens/durga_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/dutta_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/galin_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/ganesh_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/shiv_splash.dart';
-import 'package:aarti_mantra/splash_screen/splash_screens/vitthal_splash.dart';
+
+import 'package:aarti_mantra/features/home_screen/homescreen.dart';
 import 'package:flutter/material.dart';
 
-import 'aarti_screen/durga_screen.dart';
-import 'aarti_screen/dutta_screen.dart';
-import 'aarti_screen/ganesh_screen.dart';
-import 'aarti_screen/shiv_screen.dart';
-import 'aarti_screen/vitthal_screen.dart';
-import 'home_screen/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
