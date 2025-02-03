@@ -1,0 +1,51 @@
+{
+  "languageSettings": " Language Setting",
+  "selectLanguage": " Select Lang",
+  "languageMarathi": "Marathi",
+  "languageHindi": " Hindi",
+  "languageEnglish": "English",
+  "saveExit": "Save and Exit",
+  "home": "Home",
+  "about": "About",
+  "setting": "Setting",
+  "ganapatiaarti": "Ganapati Aarti",
+  "durgaaarti": "Durga Aarti",
+  "duttaaarti": "Dutta Aarti",
+
+  "vitthalaarti": "Vitthal Aarti",
+  "ghalinaarti": "Ghalin Aarti",
+  "allaarties": " All Aarties ",
+  "aartisangrah": "Aarti Sangrah",
+
+
+  "ganesh": " SukhKarta Dukhharta Varta Vighnachi\nNoorvi Poorvi Prem Krupya Jayachi\n\nSarwangi Sundar Utishendu Rachi\nKanthi Jhalke Maad Mukhta Padhanchi\n\nJai Dev Jai Dev\nJai Dev Jai Dev Jai Mangal Murti\nDarshan Marte Maan Kamana Purti\nJai Dev Jai Dev\n\nJai Dev Jai Dev Jai Mangal Murti\nDarshan Marte Maan Kamana Purti\nJai Dev Jai Dev\n\nRatnakhachit Phara Tujh Gaurikumra\nChandanaachi Uti Kumkum Ke Shara\n\nHire Jadit Mukut Shobhato Bara\nRunjhunati Nupure Charani Ghagriya\n\nJai Dev Jai Dev Jai Mangal Murti\nDarshan Marte Maan Kamana Purti\nJai Dev Jai Dev\n\nJai Dev Jai Dev Jai Mangal Murti\nDarshan Marte Maan Kamana Purti\nJai Dev Jai Dev\n\nLambodar Pitaambar Phanivar Vandana\nSaral Sond Vakratunda Trinayana\n\nDas Ramacha Vat Pahe Sadna\nSankati Pavave Nirvani Rakshave Survar Vandana\n\nJai Dev Jai Dev\n\nJai Dev Jai Dev Jai Mangal Murti\nDarshan Marte Maan Kamana Purti\nJai Dev Jai Dev\n\n",
+
+  "durga": "Durge Durghat Bhari Tujavin Sansari\nAnathnathhe Ambe Karuna Vistari\nVaari, Vaari, Janm-Maranate Vaari\nHaari Padlo Aata Sankat Nivari\n\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi...\n\nTribhuvan Bhuvani Pahata Tuj Ase Nahi\nChari Shramle, Parantu Na Bolve Kahi\nSaahi Vivaad Karita Padlo Pravahi\nTe Tu Bhaktalagi Paavasi Lavlahi\n\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi...\n\nPrasannavadane Prasann Hoshi Nijdasa\nKleshapasun Sodi Todi Bhavapasha\nAmbe Tujvachun Kon Purveem Aasha?\nNarhari Tallin Jhala Padapankajalesha\n\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi Mahishasuramardini\nSurvar, Ishwar Varde Tarak Sanjeevani\nJai Devi, Jai Devi...",
+
+  "dutta": "Jay Dev Jay Dev Jay Shri Gurudatta.\nAarti Ovalita Harli Bhavchinta ॥ Dhru ॥\n\nTrigunatmak Trimurti Datt Ha Janaa.\nTriguni Avataar Trailokyaraanaa.\nNeti Neti Shabd Na Ye Anumana.\nSurvar Munijan Yogi Samadhi Na Ye Dhyaanaa ॥ 1 ॥\n\nSabhya Abhyantari Tu Ek Datt.\nAbhagyasi Kaichi Kalel Hi Maat.\nParahi Paratli Tethe Kaicha Ha Het.\nJanmamaranachaahi Puralase Ant ॥ 2 ॥\n\nDatt Yeuniya Ubha Thakla.\nBhavye Sashthange Pranipat Kela.\nPrasann Hoouni Ashirwad Didhla.\nJanmamaranacha Phera Chukvila ॥ 3 ॥\n\nDatt Datt Aise Lagale Dhyan.\nHaraple Man Jhale Unman.\nMee Tu Panachi Jhali Bolwan.\nEka Janardani Shridattdhyan ॥ 4 ॥",
+
+  "vitthal": "Yuge Athhavis Vitvevari Ubha\nVamangī Rakhumāī Dīse Divya Shobhā\nPundalikāche Bheṭī Parabrahma Āleṅ Gā\nCharaṇī Vāhe Bhīmā Uddhārī Jagā || 1 ||\nJay Dev Jay Dev Jay Pandurangā\nRakhumāī Vallabhā Raīchā Vallabhā Pāve Jivalagā || Dhru ||\n\nTulsi Mālā Gaḷā Kara Thevuni Kaṭī\nKāṅse Pīṭāmbara Kasturī Lallāṭī\nDev Survar Nitya Yeṭī Bheṭī\nGarūḍ Hanumant Pudhē Ubhē Rāhatī || 2 ||\n\nDhanya Veṇunād Anukṣhetrapālā\nSuvarṇācī Kamalē Vanamālā Gaḷā\nRaī Rakhumābāī Rāṇīyā Sakaḷā\nŌvaḷitī Rājā Viṭhōbā Sāwaḷā || 3 ||\n\nŌvāḷū Ārtyā Viṭhōbā Sāwaḷā ||\nJay Dev || 3 ||\n\nŌvāḷū Ārtyā Kurvadyā Yeṭī\nChandrbhāgēmājī Sōḍuniā Dēṭī\nDiṇḍyā Patākā Vaiṣṇav Nāchatī\nPāṇḍharīchā Mahimā Varnāvā Kīṭī || 4 ||\n\nĀṣāḍhī Kārtikī Bhaktajan Yeṭī\nChandrbhāgemadhyē Snānē Jē Karitī\nDarśanheḷāmātrēṁ Tayā Hōy Muktī\nKēśavāsī Nāmdēv Bhāvē Ōvaḷitī || 5 ||",
+
+
+
+  "shiv": "Lavathavati Vikrāḷā Brahmāṇḍī Māḷā\nVīṣē Kaṇṭha Kāḷā Trīnētrī Jvālā\nLāvaṇya Sundara Mastakī Bālā\nTēthuniyā Jaḷa Nirmala Vāhē Jhuljhula\n\nJay Dev Jay Dev Jay Śrī Śaṅkarā\nĀrti Ōvāḷū Tuj Karpurgaurā\n\nKarpurgaurā Bhōḷā Nayani Viśāḷā\nArdhāṅgī Pārvati Sumanāṅchī Māḷā\nVibhūtićē Udhalaṇ Śitikāṇṭha Nīlā\nAisā Śaṅkar Śōbhē Umāvēlhāḷā\n\nJay Dev Jay Dev Jay Śrī Śaṅkarā\nĀrti Ōvāḷū Tuj Karpurgaurā\n\nDēvī Daityī Sāgaramanthana Pai Kēlē\nTyāmājī Avacita Haḷāhaḷa Jē Uṭhilē\nTē Tvaṁ Asurapānē Prāśana Kēlē\nNīlakaṇṭha Nāma Prasiddha Jāḷē\n\nJay Dev Jay Dev Jay Śrī Śaṅkarā\nĀrti Ōvāḷū Tuj Karpurgaurā\n\nVyāghrāmbar Phanivardhara Sundara Mahanārī\nPañcānana Manmohan Munijan Sukḥārī\nŚatakōṭīcē Bīja Vācē Uccārī\nRaghukulatīlaka Rāmadāsa Antarī\n\nJay Dev Jay Dev Jay Śrī Śaṅkarā\nĀrti Ōvāḷū Tuj Karpurgaurā",
+
+
+
+
+  "aboutScreenTitle": "About App",
+  "appDescription": "This app is created for all devotees who wish to recite Ganpati Aarti, Mantras, and Stotras. It includes various Marathi Aartis, devotional songs, and mantras.",
+  "features": "Features:",
+  "feature1": "Complete Ganpati Aarti Collection",
+  "feature2": "Mantras and Bhajans",
+  "feature3": "Simple and Beautiful User Interface",
+  "feature4": "Offline Usage Support",
+  "feature5": "Devotional experience without any ads",
+  "developer": "Developer:",
+  "developerMessage": "This app is created with devotion for all devotees. We are constantly improving it. Please share your feedback with us.",
+  "closeButton": "Close",
+  "noAudioAvailable": "No audio available for hindi .",
+
+
+"ghalin": "Ghaalīn Lotāṅgaṇ Vandīn Charaṇ\nDolyaṇī Pāhin Roop Tujhe\n\nPremē Āliṅgīn Ānand Poojan\nBhāvē Ōvāḷīn Mhanē Nāma\n\nTvamēv Māta Pitā Tvamēv\nTvamēv Bandhuḥ Sakhā Tvamēv\n\nTvamēv Vidyā Draviṇam Tvamēv\nTvamēv Sarvam Mama Devadev\n\nKāyēn Vāchā Manasēndriyaīrva\nBuddhyātmānā Vā Prakṛti Svabhāvāt\n\nKaramī Yadyat Sakalaṁ Parasmai\nNārāyaṇāyēti Samarpayāmi\n\nAchyutaṁ Kēśavaṁ Rāma Nārāyaṇam\nKr̥ṣṇadāmodaraṁ Vāsudēvaṁ Bhajē\n\nShrīdharaṁ Mādhavaṁ Gōpikāvallabham\nJānakīnāyakaṁ Rāma-Candra Bhajē\n\nHarē Rāma Harē Rāma Rāma Rāma Harē Harē\nHarē Kṛṣhṇa Harē Kṛṣhṇa Kṛṣhṇa Kṛṣhṇa Harē Harē\nMangalamūrti Mōrayā\nGaṇapatibāppā Mōrayā"
+}

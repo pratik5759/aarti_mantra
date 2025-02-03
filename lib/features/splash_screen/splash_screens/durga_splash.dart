@@ -18,7 +18,7 @@ class _DurgaSplashScreenState extends State<DurgaSplashScreen> {
   void initState() {
     super.initState();
     // Set a timer to navigate after 3 seconds
-    Timer(Duration(seconds:1), () {
+    Timer(Duration(seconds:2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => DurgaScreen()),
