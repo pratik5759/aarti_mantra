@@ -444,7 +444,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(), // Set the splash screen as the starting screen
+      home: AartiSangrahScreen(), // Set the splash screen as the starting screen
       routes: {
         '/home': (context) => AartiSangrahScreen(),
       },
