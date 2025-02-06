@@ -363,7 +363,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'features/home_screen/homescreen.dart';
-import 'features/splash_screen/splashh_screen.dart';  // Correct import
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
